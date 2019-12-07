@@ -21,19 +21,8 @@ const storage = multer.diskStorage({
     callback(null, `${file.fieldname}-${Date.now()}${extName}`);
   }
 });
-
 const upload = multer({ storage });
 
-app.all("*", function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Content-Type,Content-Length, Authorization, Accept,X-Requested-With"
-  );
-  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-  res.header("X-Powered-By", " 3.2.1");
-  next();
-});
 
 app.get("/", (req, res) => {
   res
